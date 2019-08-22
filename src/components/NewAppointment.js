@@ -8,7 +8,8 @@ export default class NewAppointment extends Component {
       date: '',
       time: '',
       syntoms: ''
-    }
+    },
+    error: false
   }
 
   handleChange = state => {
@@ -20,6 +21,23 @@ export default class NewAppointment extends Component {
     })
   }
 
+  handleSubmit = data => {
+    data.preventDefault()
+    const { petsName, ownersName, date, time, syntoms } = this.state.appointment
+    if (
+      petsName === '' ||
+      ownersName === '' ||
+      date === '' ||
+      time === '' ||
+      syntoms === ''
+    ) {
+      this.setState({
+        error: true
+      })
+      return
+    }
+  }
+
   render() {
     return (
       <div className='card mt-5 py-5'>
@@ -27,7 +45,7 @@ export default class NewAppointment extends Component {
           <h2 className='card-title text-center mb-5'>
             Fill out the form to create an appointment
           </h2>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <div className='form-group'>
               <label className='col-sm-4 col-lg-2 col-form-label'>
                 Pet&apos;s Name

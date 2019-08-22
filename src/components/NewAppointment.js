@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
+import uuid from 'uuid'
 
 export default class NewAppointment extends Component {
   state = {
@@ -36,6 +38,11 @@ export default class NewAppointment extends Component {
       })
       return
     }
+
+    const newAppointment = { ...this.state.appointment }
+    newAppointment.id = uuid()
+
+    this.props.createNewAppointment(newAppointment)
   }
 
   render() {

@@ -1,10 +1,20 @@
-import React, { Component } from 'react';
-import './bootstrap.min.css';
-import Header from './components/Header';
-import NewAppointment from './components/NewAppointment';
+import React, { Component } from 'react'
+import './bootstrap.min.css'
+import Header from './components/Header'
+import NewAppointment from './components/NewAppointment'
 
 export default class App extends Component {
-  state = {};
+  state = {
+    appointments: []
+  }
+
+  createNewAppointment = data => {
+    const appointments = [...this.state.appointments, data]
+    this.setState({
+      appointments
+    })
+  }
+
   render() {
     return (
       <div className='container'>
@@ -12,10 +22,10 @@ export default class App extends Component {
 
         <div className='row'>
           <div className='col-md-10 mx-auto'>
-            <NewAppointment />
+            <NewAppointment createNewAppointment={this.createNewAppointment} />
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

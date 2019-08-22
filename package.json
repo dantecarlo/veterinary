@@ -11,7 +11,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .jsx,.js src",
+    "pre-commit": "yarn run lint",
+    "pre-push": "yarn test",
+    "post-merge": "yarn install",
+    "post-rewrite": "yarn install"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +34,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.0",
     "eslint-plugin-import": "^2.18.2",

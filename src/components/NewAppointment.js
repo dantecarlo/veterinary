@@ -1,7 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class NewAppointment extends Component {
-  state = {};
+  state = {
+    appointment: {
+      petsName: '',
+      ownersName: '',
+      date: '',
+      time: '',
+      syntoms: ''
+    }
+  }
+
+  handleChange = state => {
+    this.setState({
+      appointment: {
+        ...this.state.appointment,
+        [state.target.name]: state.target.value
+      }
+    })
+  }
+
   render() {
     return (
       <div className='card mt-5 py-5'>
@@ -12,7 +30,7 @@ export default class NewAppointment extends Component {
           <form>
             <div className='form-group'>
               <label className='col-sm-4 col-lg-2 col-form-label'>
-                Pet's Name
+                Pet&apos;s Name
               </label>
               <div className='col-sm-8 col-lg-10'>
                 <input
@@ -20,13 +38,15 @@ export default class NewAppointment extends Component {
                   className='form-control'
                   placeholder="Pet's Name"
                   name='petsName'
+                  onChange={this.handleChange}
+                  value={this.state.appointment.petsName}
                 />
               </div>
             </div>
 
             <div className='form-group'>
               <label className='col-sm-4 col-lg-2 col-form-label'>
-                Owner's Name
+                Owner&apos;s Name
               </label>
               <div className='col-sm-8 col-lg-10'>
                 <input
@@ -34,6 +54,8 @@ export default class NewAppointment extends Component {
                   className='form-control'
                   placeholder="Owner's Name"
                   name='ownersName'
+                  onChange={this.handleChange}
+                  value={this.state.appointment.ownersName}
                 />
               </div>
             </div>
@@ -41,11 +63,23 @@ export default class NewAppointment extends Component {
             <div className='form-group'>
               <label className='col-sm-4 col-lg-2 col-form-label'>Date</label>
               <div className='col-sm-8 col-lg-4'>
-                <input type='date' className='form-control' name='date' />
+                <input
+                  type='date'
+                  className='form-control'
+                  name='date'
+                  onChange={this.handleChange}
+                  value={this.state.appointment.date}
+                />
               </div>
               <label className='col-sm-4 col-lg-2 col-form-label'>Time</label>
               <div className='col-sm-8 col-lg-4'>
-                <input type='time' className='form-control' name='time' />
+                <input
+                  type='time'
+                  className='form-control'
+                  name='time'
+                  onChange={this.handleChange}
+                  value={this.state.appointment.time}
+                />
               </div>
             </div>
 
@@ -58,6 +92,8 @@ export default class NewAppointment extends Component {
                   className='form-control'
                   name='syntoms'
                   placeholder='Describe the syntoms'
+                  onChange={this.handleChange}
+                  value={this.state.appointment.syntoms}
                 />
               </div>
             </div>
@@ -70,6 +106,6 @@ export default class NewAppointment extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }

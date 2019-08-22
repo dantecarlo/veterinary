@@ -18,6 +18,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     // first argument: 0 - silent, 1 - warning, 2 - error
+
     strict: [2, 'safe'],
     'no-debugger': 2,
     'brace-style': [2, '1tbs', { allowSingleLine: true }],
@@ -70,4 +71,4 @@ module.exports = {
       { name: 'Link', linkAttribute: 'to' }
     ]
   }
-};
+}

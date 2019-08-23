@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Appointment = ({ appointment, eraseAppointment }) => (
   <div className='media mt-3'>
@@ -27,5 +27,10 @@ const Appointment = ({ appointment, eraseAppointment }) => (
     </div>
   </div>
 )
+
+Appointment.propTypes = {
+  appointment: PropTypes.object.isRequired,
+  eraseAppointment: PropTypes.func.isRequired
+}
 
 export default Appointment

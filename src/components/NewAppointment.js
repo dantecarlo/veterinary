@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
 import uuid from 'uuid'
+import PropTypes from 'prop-types'
 
 const initialState = {
   appointment: {
@@ -148,4 +149,8 @@ export default class NewAppointment extends Component {
       </div>
     )
   }
+}
+
+NewAppointment.propsTypes = {
+  createNewAppointment: PropTypes.func.isRequired
 }

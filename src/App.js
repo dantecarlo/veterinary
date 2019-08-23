@@ -16,6 +16,14 @@ export default class App extends Component {
     })
   }
 
+  eraseAppointment = id => {
+    const currentAppointments = [...this.state.appointments]
+    const appointments = currentAppointments.filter(
+      appointment => appointment.id !== id
+    )
+    this.setState({ appointments })
+  }
+
   render() {
     return (
       <div className='container'>
@@ -27,7 +35,10 @@ export default class App extends Component {
           </div>
 
           <div className='mt-5 col-md-10 mx-auto'>
-            <AppointmentsList appointments={this.state.appointments} />
+            <AppointmentsList
+              appointments={this.state.appointments}
+              eraseAppointment={this.eraseAppointment}
+            />
           </div>
         </div>
       </div>
